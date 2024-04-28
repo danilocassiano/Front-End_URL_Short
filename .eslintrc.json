@@ -1,3 +1,158 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "commonjs": true,
+    "es2022": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 13
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": [
+        [
+          "@elasticsearch",
+          "./src/database/elasticsearch/index.js"
+        ],
+        [
+          "@srp-database",
+          "./src/database/srp/index.js"
+        ],
+        [
+          "@srp-models",
+          "./src/database/srp/models/index.model.js"
+        ],
+        [
+          "@srp-hub-database",
+          "./src/database/hub/index.js"
+        ],
+        [
+          "@srp-hub-models",
+          "./src/database/hub/models/index.model.js"
+        ],
+        [
+          "@srp-hub-redis",
+          "./src/database/redis/index.js"
+        ],
+        [
+          "@utils",
+          "./src/utils"
+        ],
+        [
+          "@responses",
+          "./src/responses/index.response.js"
+        ],
+        [
+          "@config",
+          "./src/config"
+        ],
+        [
+          "@singletons",
+          "./src/singletons/index.singleton.js"
+        ],
+        [
+          "@repositories",
+          "./src/components/index.repository.js"
+        ],
+        [
+          "@services",
+          "./src/components/index.service.js"
+        ],
+        [
+          "@dtos",
+          "./src/components/index.dto.js"
+        ],
+        [
+          "@attrs",
+          "./src/components/index.attrs.js"
+        ],
+        [
+          "@hub-singletons",
+          "./src/singletons/hub/index.singleton.js"
+        ],
+        [
+          "@hub-repositories",
+          "./src/components/hub/index.repository.js"
+        ],
+        [
+          "@hub-services",
+          "./src/components/hub/index.service.js"
+        ],
+        [
+          "@hub-dtos",
+          "./src/components/hub/index.dto.js"
+        ],
+        [
+          "@hub-controllers",
+          "./src/components/hub/index.controller.js"
+        ],
+        [
+          "@errors",
+          "./src/errors/index.error.js"
+        ],
+        [
+          "@controllers",
+          "./src/components/index.controller.js"
+        ],
+        [
+          "@validators",
+          "./src/validators/index.validator.js"
+        ],
+        [
+          "@routes",
+          "./src/routes/index.routes.js"
+        ],
+        [
+          "@middlewares",
+          "./src/middlewares"
+        ]
+      ]
+    }
+  },
+  "rules": {
+    "no-trailing-spaces": [
+      "error",
+      {
+        "skipBlankLines": false
+      }
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 0
+      }
+    ],
+    "no-fallthrough": "off",
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ]
+  }
 }

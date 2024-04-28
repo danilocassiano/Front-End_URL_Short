@@ -1,0 +1,14 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.autoIndent": "full",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "none",
+  "prettier.useEditorConfig": false,
+  "editor.wordWrapColumn": 200,
+  "prettier.printWidth": 200,
+  "prettier.traillingComma": "none",
+  "livePreview.defaultPreviewPath": "/coverage/lcov-report/index.html"
+}
