@@ -54,8 +54,11 @@ describe('[ BACKEND ]', () => {
         const toUnprocess = (message: string[], type: 'max' | 'structure' | 'required') => {
             const validateMessage = {
               'max': [            
-                
-                
+                'O campo username deve ter no máximo 16 caracteres',
+                'O campo email é inválido',
+                'O campo email deve ter no máximo 255 caracteres',
+                'O campo password deve ter no máximo 20 caracteres',
+                'O campo name deve ter no máximo 20 caracteres'
               ],
               'structure': [
                 "O campo email é inválido",
@@ -111,18 +114,18 @@ describe('[ BACKEND ]', () => {
 
         it('[422] should validate max length', async () =>{
           const {status, error, data} = await backendService.register(user.maxLength.register)
-          
+          console.log(data)
           expect(status).toBe(422);
           expect(error).toBeDefined();
-          toUnprocess(data.mensagem, 'max')
+          toUnprocess(data, 'max')
           expect(data).toBeDefined();
         })
 
         it('[422] should validate structure', async () =>{
           const {status, error, data} = await backendService.register(user.structure.register as unknown as IUserCreate)
-          console.log(data)
+          
           expect(status).toBe(422);
-          toUnprocess(data.mensagem, 'structure')
+          toUnprocess(data, 'structure')
           expect(error).toBeDefined();
           expect(data).toBeDefined();          
         })
@@ -133,7 +136,22 @@ describe('[ BACKEND ]', () => {
           expect(status).toBe(422);
           expect(error).toBeDefined();
           expect(data).toBeDefined();
-          toUnprocess(data.mensagem, 'structure')
+          toUnprocess(data, 'structure')
+        })
+      })
+
+      describe('[LOGIN]', () => {
+        it('[200] should login', async () => {
+          const {status, error, data} = await backendService.login({
+            username: user.register.username,
+            password: user.register.password
+          })
+          console.log(data)
+          expect(status).toBe(200);
+          expect(error).toBeUndefined();
+          expect(data.email).toBe(user.register.email)
+          expect(data.name).toBe(user.register.name)
+          expect(data.token).toBeDefined()
         })
       })
     })

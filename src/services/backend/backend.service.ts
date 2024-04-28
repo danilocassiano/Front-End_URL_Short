@@ -38,9 +38,10 @@ export class BackendService {
         }
     }
 
-    async login(user: IUserLogin): Promise<IUserLoginResponse> {
+    async login(user: IUserLogin): Promise<IResponse<IUserLoginResponse | any>> {
         return this.http.post('/users/signin', user)
-            .then( ({ data })=> data );
+            .then(this.getData<IUserLoginResponse>)
+            .catch(this.getError);
     }
 
     async register(user: IUserCreate): Promise<IResponse<IUser | any>>{

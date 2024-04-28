@@ -10,7 +10,7 @@ export interface IUser {
 export type IUserCreate = Omit<IUser, 'status' | 'pro'>; 
 
 export interface IUserLogin {
-    email: string;
+    username: string;
     password: string;
 }
 
